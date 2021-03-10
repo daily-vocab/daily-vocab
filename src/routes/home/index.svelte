@@ -1,5 +1,6 @@
 <script>
     import Card from "../../components/card.svelte";
+    import Ellipsis from "../../components/ellipsis.svelte";
     import { DateTime } from "luxon";
 
     const vocabs = [
@@ -43,6 +44,8 @@
             </Card>
         </div>
     {/each}
+
+    <Ellipsis />
 </section>
 
 <style>
