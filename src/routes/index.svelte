@@ -2,17 +2,31 @@
 	<title>daily-vocab</title>
 </svelte:head>
 
-<h1>daily vocab!</h1>
+<section>
+	<h1>daily vocab!</h1>
+	<p>Learn a new word everyday!</p>
+	<button>Get Started</button>
+</section>
 
 <style>
-	h1 {
-		text-align: center;
-		margin: 0 auto;
+	p {
+		font-size: 1.25rem;
+		text-transform: lowercase;
+	}
+
+	section {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		align-self: center;
 	}
 
 	h1 {
-		font-size: 2.8em;
-		text-transform: uppercase;
+		text-align: center;
+		margin: 0 auto;
+		font-size: 3rem;
+		text-transform: lowercase;
 		font-weight: 700;
 		margin: 0 0 0.5em 0;
 	}

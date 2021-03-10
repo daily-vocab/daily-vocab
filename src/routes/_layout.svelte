@@ -2,17 +2,23 @@
 	export let segment;
 </script>
 
+<main>
+	<slot />
+</main>
+
 <style>
 	main {
-		position: relative;
-		max-width: 56em;
+		display: flex;
+		flex-direction: row;
+
+		height: 100vh;
+		max-width: 56rem;
 		background-color: white;
-		padding: 2em;
 		margin: 0 auto;
 		box-sizing: border-box;
 	}
-</style>
 
-<main>
-	<slot></slot>
-</main>
+	:global(main > section) {
+		width: 100%;
+	}
+</style>
