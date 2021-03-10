@@ -1,3 +1,7 @@
+<script>
+	import { goto } from '@sapper/app'
+</script>
+
 <svelte:head>
 	<title>daily-vocab</title>
 </svelte:head>
@@ -5,7 +9,7 @@
 <section>
 	<h1>daily vocab!</h1>
 	<p>Learn a new word everyday!</p>
-	<button>Get Started</button>
+	<button on:click={async () => { await goto('home') }}>Get Started</button>
 </section>
 
 <style>
