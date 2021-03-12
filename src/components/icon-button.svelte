@@ -1,11 +1,10 @@
 <script>
     import Icon from "svelte-awesome/components/Icon.svelte";
 
-
-    export let icon;
+export let icon;
 </script>
 
-<button class="container">
+<button class="container" on:click>
     <Icon data={icon} scale={2} class="icon"/>
 </button>
 
