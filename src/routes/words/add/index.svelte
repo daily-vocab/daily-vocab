@@ -1,3 +1,8 @@
+<script>
+  import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import IconButton from "../../../components/icon-button.svelte";
+
+</script>
 <section class="container">
   <h1>add a new word</h1>
 
@@ -7,6 +12,8 @@
     <div>let's use it in a sentence</div>
     <input type='text'/>
   </form>
+
+  <IconButton icon={faCheck}/>
 </section>
 
 <style>
@@ -17,6 +24,7 @@
   form {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
   }
 
   input {
@@ -28,5 +36,9 @@
     align-self: stretch;
     padding: 0.25rem 1rem; 
     color: black;
+  }
+
+  :global(.container button) {
+    align-self: flex-end;
   }
 </style>
