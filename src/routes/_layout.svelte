@@ -20,5 +20,7 @@
 
 	:global(main > section) {
 		width: 100%;
+		display: flex;
+		flex-direction: column;
 	}
 </style>

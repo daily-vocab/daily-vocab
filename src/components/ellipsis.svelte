@@ -16,7 +16,7 @@
     .dot {
         height: 0.5rem;
         width: 0.5rem;
-        margin: 0.25rem;
+        margin: 0.25rem 0 0.5rem 0;
         border-radius: 1rem;
         background-color: var(--accent-color);
     }

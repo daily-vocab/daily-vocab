@@ -1,7 +1,9 @@
 <script>
-    import Card from "../../components/card.svelte";
-    import Ellipsis from "../../components/ellipsis.svelte";
-    import { DateTime } from "luxon";
+    import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { DateTime } from "luxon";
+import Card from "../../components/card.svelte";
+import Ellipsis from "../../components/ellipsis.svelte";
+import IconButton from "../../components/icon-button.svelte";
 
     const vocabs = [
         {
@@ -45,7 +47,10 @@
         </div>
     {/each}
 
-    <Ellipsis />
+    <div class='new-vocab'>
+        <Ellipsis />
+        <IconButton icon={faPlus} />
+    </div>
 </section>
 
 <style>
@@ -69,5 +74,11 @@
 
     .vocab_sentence {
         margin: 1rem 0 0 0;
+    }
+
+    .new-vocab {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
     }
 </style>
