@@ -1,9 +1,12 @@
 <script>
     import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { goto } from '@sapper/app';
 import { DateTime } from "luxon";
 import Card from "../../components/card.svelte";
 import Ellipsis from "../../components/ellipsis.svelte";
 import IconButton from "../../components/icon-button.svelte";
+
+
 
     const vocabs = [
         {
@@ -49,7 +52,7 @@ import IconButton from "../../components/icon-button.svelte";
 
     <div class='new-vocab'>
         <Ellipsis />
-        <IconButton icon={faPlus} />
+        <IconButton icon={faPlus} on:click={() => goto('/words/add')}/>
     </div>
 </section>
 
