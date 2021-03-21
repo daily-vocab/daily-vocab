@@ -1,18 +1,19 @@
 <script>
   import { faCheck } from '@fortawesome/free-solid-svg-icons';
+  import { tick } from 'svelte';
   import IconButton from '../../../components/icon-button.svelte';
 
   let word = ''
   let usage = ''
 </script>
-<section class="container">
+<section class="container words-add">
   <h1>add a new word</h1>
 
   <form>
     <div>what's the word?</div>
-    <input type='text' bind:value={word} on:input={() => word = word.toLowerCase()}/>
+    <input type='text' bind:value={word} on:input={async () => { await tick(); word = word.toLowerCase()}}/>
     <div>let's use it in a sentence</div>
-    <input type='text' bind:value={usage} on:input={() => usage = usage.toLowerCase()} />
+    <textarea class='usage-input' type='text' bind:value={usage} on:input={async () => {await tick();usage = usage.toLowerCase()}} />
   </form>
 
   <IconButton icon={faCheck}/>
@@ -29,7 +30,7 @@
     flex-grow: 1;
   }
 
-  input {
+  input, textarea {
     border: none;
     border-radius: 0.5rem;
     font-size: 1.5rem;
@@ -40,7 +41,11 @@
     color: black;
   }
 
-  :global(.container button) {
+  .usage-input {
+    flex-grow: 1;
+  }
+
+  :global(.words-add button) {
     align-self: flex-end;
   }
 </style>
