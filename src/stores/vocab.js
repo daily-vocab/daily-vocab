@@ -1,3 +1,4 @@
+import { DateTime } from "luxon";
 import { writable } from "svelte/store";
 
 const VOCAB_STORE_KEY = 'dv_vocabStoreKey'
@@ -16,7 +17,12 @@ export const vocab = {
   },
   addVocab: (vocab) => {
     update(vocabItems => {
-        const updatedVocabItems = [...vocabItems, vocab]
+      const vocabToAdd = {
+          word: vocab.word,
+          sentences: [{ text: vocab.usage, createdAt: DateTime.local() }],
+          createdAt: DateTime.local()
+        }
+        const updatedVocabItems = [...vocabItems, vocabToAdd]
         const vocabString = JSON.stringify(updatedVocabItems)
         localStorage.setItem(VOCAB_STORE_KEY, vocabString)
         return updatedVocabItems

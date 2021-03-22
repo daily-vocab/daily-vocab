@@ -1,10 +1,21 @@
 <script>
   import { faCheck } from '@fortawesome/free-solid-svg-icons';
+  import { goto } from "@sapper/app";
   import { tick } from 'svelte';
   import IconButton from '../../../components/icon-button.svelte';
+  import { vocab } from '../../../stores/vocab';
 
   let word = ''
   let usage = ''
+
+  const handleAddVocab = async (event) => {
+    event.preventDefault();
+    vocab.addVocab({
+      word, 
+      usage
+    })
+    await goto('/home')
+  }
 </script>
 <section class="container words-add">
   <h1>add a new word</h1>
@@ -14,7 +25,7 @@
     <input type='text' bind:value={word} on:input={async () => { await tick(); word = word.toLowerCase()}}/>
     <div>let's use it in a sentence</div>
     <textarea class='usage-input' type='text' bind:value={usage} on:input={async () => {await tick();usage = usage.toLowerCase()}} />
-    <IconButton icon={faCheck}/>
+    <IconButton icon={faCheck} on:click={handleAddVocab}/>
   </form>
 
 </section>
