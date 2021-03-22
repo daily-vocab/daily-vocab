@@ -14,9 +14,9 @@
     <input type='text' bind:value={word} on:input={async () => { await tick(); word = word.toLowerCase()}}/>
     <div>let's use it in a sentence</div>
     <textarea class='usage-input' type='text' bind:value={usage} on:input={async () => {await tick();usage = usage.toLowerCase()}} />
+    <IconButton icon={faCheck}/>
   </form>
 
-  <IconButton icon={faCheck}/>
 </section>
 
 <style>
@@ -43,9 +43,14 @@
 
   .usage-input {
     flex-grow: 1;
+    margin-bottom: 0;
   }
 
   :global(.words-add button) {
     align-self: flex-end;
+    position:absolute;
+    bottom: 1rem;
+    margin: 1rem;
+    right: 1rem;
   }
 </style>
