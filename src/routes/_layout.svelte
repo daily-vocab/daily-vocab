@@ -1,5 +1,13 @@
 <script>
+	import { onMount } from 'svelte';
+	import { vocab } from '../stores/vocab';
+
+
 	export let segment;
+
+	onMount(async () => {
+		await vocab.loadVocab()
+	})
 </script>
 
 <main>

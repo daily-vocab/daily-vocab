@@ -1,51 +1,31 @@
 <script>
     import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { goto } from '@sapper/app';
-import { DateTime } from "luxon";
-import Card from "../../components/card.svelte";
-import Ellipsis from "../../components/ellipsis.svelte";
-import IconButton from "../../components/icon-button.svelte";
+    import { goto } from '@sapper/app';
+    import Card from "../../components/card.svelte";
+    import Ellipsis from "../../components/ellipsis.svelte";
+    import IconButton from "../../components/icon-button.svelte";
+    import { vocab } from '../../stores/vocab';
 
-
-
-    const vocabs = [
-        {
-            language: "fr",
-            createdAt: DateTime.now().minus({ days: 1 }),
-            word: "mange",
-            sentences: [
-                {
-                    text: "je mange de la pizza.",
-                },
-            ],
-        },
-        {
-            language: "fr",
-            createdAt: DateTime.now().minus({ days: 2 }),
-            word: "arrondissement",
-            sentences: [
-                {
-                    text: "je suis à la deuxième arrondissement.",
-                },
-            ],
-        },
-    ];
 </script>
 
 <section>
     <h1>welcome back</h1>
 
-    {#each vocabs as vocab}
+    {#if $vocab.length === 0}
+    <p>uh oh 🙊 looks like you don't have any vocab yet!  No worries, let's add one now! 😃</p>
+    {/if}
+
+    {#each $vocab as vocabItem}
         <div class="vocab">
             <Card>
                 <div class="vocab_header">
-                    <div class="vocab_word">{vocab.word}</div>
+                    <div class="vocab_word">{vocabItem.word}</div>
                     <div class="vocab_createdAt">
-                        {vocab.createdAt.toRelative()}
+                        {vocabItem.createdAt.toRelative()}
                     </div>
                 </div>
 
-                <p class="vocab_sentence">{vocab.sentences[0].text}</p>
+                <p class="vocab_sentence">{vocabItem.sentences[0].text}</p>
             </Card>
         </div>
     {/each}
