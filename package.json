@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build --legacy",
+    "test": "jest",
     "export": "sapper export --legacy",
     "start": "node __sapper__/build"
   },
