@@ -1,7 +1,7 @@
 <script>
     import Icon from "svelte-awesome/components/Icon.svelte";
 
-export let icon;
+    export let icon;
 </script>
 
 <button class="container" on:click>
@@ -22,9 +22,6 @@ export let icon;
         padding: 0.5rem;
         height: 2rem;
         width: 2rem;
-    }
-
-    :global(.container .icon > path) {
         color: white;
     }
 </style>
