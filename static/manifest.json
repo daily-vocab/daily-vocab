@@ -3,7 +3,7 @@
 	"theme_color": "#333333",
 	"name": "daily-vocab",
 	"short_name": "daily-vocab",
-	"display": "minimal-ui",
+	"display": "fullscreen",
 	"start_url": "/",
 	"icons": [
 		{
