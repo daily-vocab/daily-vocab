@@ -22,7 +22,7 @@
                 <div class="vocab_header">
                     <div class="vocab_word">{vocabItem.word}</div>
                     <div class="vocab_createdAt">
-                        {DateTime.fromISO(vocabItem.createdAt).toRelative()}
+                        {DateTime.fromISO(vocabItem.createdAt).toRelativeCalendar()}
                     </div>
                 </div>
 
