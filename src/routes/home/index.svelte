@@ -64,5 +64,7 @@
         display: flex;
         flex-direction: column;
         align-self: center;
+        position: relative;
+        top: -1.25rem;
     }
 </style>
