@@ -1,16 +1,18 @@
-import joi from 'joi';
+import * as yup from 'yup';
 
-const wordSchema = joi
+const wordSchema = yup
   .string()
-  .required()
-  .error(new Error('this is a required field'))
+  .required('this is a required field')
 
-const usageSchema = joi
+const usageSchema = yup
   .string()
-  .required()
-  .error(new Error('this is a required field'))
+  .required('this is a required field')
+  .matches(new RegExp(`${yup.ref('word')}`), {
+    excludeEmptyString: true,
+    message:'the sentence does not contain the specified word'
+  })
 
-export const vocabSchema = joi.object({
+export const vocabSchema = yup.object({
   word: wordSchema,
   usage: usageSchema
 })
