@@ -1,0 +1,45 @@
+name: Deploy site to Github pages
+
+on:
+  push:
+    branches:
+      - develop
+
+env:
+  NODE_VERSION: "12.8.0"
+  DV_GH_PAGES_BRANCH: master
+  DV_DEPLOY_BRANCH_REF: refs/heads/cool
+  DV_SITE_EXPORT_DIRECTORY: "__sapper__/export"
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-16.04
+
+    steps:
+      - name: checkout to branch
+        uses: actions/checkout@v2
+
+      - name: setup node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: install packages
+        run: npm i
+
+      - name: export site
+        run: npm run export
+
+      - name: upload daily-vocab site artefact
+        uses: actions/upload-artifact@v1
+        with:
+          name: daily-vocab
+          path: ${{ env.DV_SITE_EXPORT_DIRECTORY }}
+
+      - name: deploy portfolio to github pages
+        if: ${{ github.ref == env.DV_DEPLOY_BRANCH_REF }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ env.DV_SITE_EXPORT_DIRECTORY }}
+          publish_branch: ${{ env.DV_GH_PAGES_BRANCH }}
