@@ -9,7 +9,7 @@ env:
   NODE_VERSION: "12.8.0"
   DV_GH_PAGES_BRANCH: master
   DV_DEPLOY_BRANCH_REF: refs/heads/cool
-  DV_SITE_EXPORT_DIRECTORY: "__sapper__/export"
+  DV_SITE_EXPORT_DIRECTORY: "__sapper__/export/daily-vocab"
   DV_APP_NAME: "daily-vocab"
 
 jobs:
