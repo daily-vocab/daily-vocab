@@ -10,6 +10,7 @@ env:
   DV_GH_PAGES_BRANCH: master
   DV_DEPLOY_BRANCH_REF: refs/heads/cool
   DV_SITE_EXPORT_DIRECTORY: "__sapper__/export"
+  DV_APP_NAME: "daily-vocab"
 
 jobs:
   build_and_deploy:
@@ -28,7 +29,7 @@ jobs:
         run: npm i
 
       - name: export site
-        run: npm run export
+        run: npm run export -- --basepath ${{ env.DV_APP_NAME }} --entry "/ /home /words/add"
 
       - name: upload daily-vocab site artefact
         uses: actions/upload-artifact@v1
