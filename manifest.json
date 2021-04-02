@@ -4,7 +4,7 @@
 	"name": "daily-vocab",
 	"short_name": "daily-vocab",
 	"display": "fullscreen",
-	"start_url": "/daily-vocab",
+	"start_url": "/",
 	"icons": [
 		{
 			"src": "icons/logo-192.png",
