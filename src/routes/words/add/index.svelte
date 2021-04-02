@@ -14,7 +14,7 @@
       word, 
       usage
     })
-    await goto('/home')
+    await goto('home')
   }
 </script>
 <section class="container words-add">

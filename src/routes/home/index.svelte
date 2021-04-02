@@ -7,6 +7,7 @@
     import IconButton from "../../components/icon-button.svelte";
     import { vocab } from '../../stores/vocab';
 
+
 </script>
 
 <section>
@@ -33,7 +34,7 @@
 
     <div class='new-vocab'>
         <Ellipsis />
-        <IconButton icon={faPlus} on:click={() => goto('/words/add')}/>
+        <IconButton icon={faPlus} on:click={() => goto('words/add')}/>
     </div>
 </section>
 
