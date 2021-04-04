@@ -1,5 +1,6 @@
 <script>
-	import { goto } from '@sapper/app'
+	import { goto } from '@sapper/app';
+
 </script>
 
 <svelte:head>
@@ -33,6 +34,10 @@
 		text-transform: lowercase;
 		font-weight: 700;
 		margin: 0 0 0.5em 0;
+	}
+
+	:global(main) {
+		background: var(--light-gradient-bg);
 	}
 
 	@media (min-width: 480px) {
