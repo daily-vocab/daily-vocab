@@ -1,11 +1,11 @@
 <script>
-    import { faPlus } from "@fortawesome/free-solid-svg-icons";
     import { goto } from '@sapper/app';
     import { DateTime } from 'luxon';
     import Card from "../../components/card.svelte";
     import Ellipsis from "../../components/ellipsis.svelte";
     import IconButton from "../../components/icon-button.svelte";
     import { vocab } from '../../stores/vocab';
+
 
 
 </script>
@@ -34,7 +34,7 @@
 
     <div class='new-vocab'>
         <Ellipsis />
-        <IconButton icon={faPlus} on:click={() => goto('words/add')}/>
+        <IconButton icon='add' on:click={() => goto('words/add')}/>
     </div>
 </section>
 

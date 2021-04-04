@@ -1,9 +1,9 @@
 <script>
-  import { faCheck } from '@fortawesome/free-solid-svg-icons';
   import { goto } from "@sapper/app";
   import { tick } from 'svelte';
   import IconButton from '../../../components/icon-button.svelte';
   import { vocab } from '../../../stores/vocab';
+
 
   let word = ''
   let usage = ''
@@ -25,7 +25,7 @@
     <input type='text' bind:value={word} on:input={async () => { await tick(); word = word.toLowerCase()}}/>
     <div>let's use it in a sentence</div>
     <textarea class='usage-input' type='text' bind:value={usage} on:input={async () => {await tick();usage = usage.toLowerCase()}} />
-    <IconButton icon={faCheck} on:click={handleAddVocab}/>
+    <IconButton icon='tick' on:click={handleAddVocab}/>
   </form>
 
 </section>
