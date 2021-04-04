@@ -1,23 +1,12 @@
 <script>
   import IconButton from './icon-button.svelte';
 
-
-
-
-
-
-
-
-
-
-
-
   export let type;
   export let icon
   export let message;
 </script>
 
-<div class={`container ${type}`}>
+<div class={`info container ${type}`}>
   <IconButton {icon} size='small' />
   <div class='message'>{message}</div>
 </div>
@@ -43,5 +32,9 @@
 
   .success {
     background-color: #4AAA5F
+  }
+
+  :global(.info .icon-button) {
+    margin: 0 0.2rem;
   }
 </style>
