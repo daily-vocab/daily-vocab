@@ -36,16 +36,21 @@
 <section class="container words-add">
   <h1>add a new word</h1>
 
-  {#if validationMessage === null}
+  {#if !touched}
     <Info
-      message='no issues so far'
-      icon='tick--light'
-      type='success' />
-  {:else}
+      message={'let\'s go'}
+      icon='warn--light'
+      type='warn' />
+  {:else if validationMessage}
     <Info
       message={validationMessage}
       type='warn'
       icon='warn--light' />
+  {:else}
+    <Info
+      message={'looks like we\'re good'}
+      type='success'
+      icon='tick--light' />
   {/if}
   <form>
     <div>what's the word?</div>
