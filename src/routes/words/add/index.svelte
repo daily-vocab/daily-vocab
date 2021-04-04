@@ -54,9 +54,30 @@
   {/if}
   <form>
     <div>what's the word?</div>
-    <input type='text' bind:value={word} on:input={async () => { await tick(); word = word.toLowerCase(); validateInputs() }}/>
+    <input
+      type='text'
+      bind:value={word}
+      on:input={async () => {
+         await tick();
+         word = word.toLowerCase();
+         validateInputs() 
+      }} 
+      on:focusout={async () => {
+        await tick();
+        word = word.trim()
+      }}
+    />
     <div>let's use it in a sentence</div>
-    <textarea class='usage-input' type='text' bind:value={usage} on:input={async () => {await tick();usage = usage.toLowerCase();validateInputs() }} />
+    <textarea
+      class='usage-input'
+      type='text'
+      bind:value={usage}
+      on:input={async () => {
+        await tick();
+        usage = usage.toLowerCase();
+        validateInputs();
+      }}
+    />
     {#if !touched || validationMessage !== null}
       <IconButton icon='warn' on:click={(event) => {event.preventDefault();}}/>
     {:else}
