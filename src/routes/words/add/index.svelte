@@ -14,8 +14,8 @@
   const handleAddVocab = async (event) => {
     event.preventDefault();
     vocab.addVocab({
-      word, 
-      usage
+      word: word.trim(), 
+      usage: usage.trim()
     })
     await goto('home')
   }
