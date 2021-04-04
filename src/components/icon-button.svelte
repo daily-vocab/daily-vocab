@@ -5,7 +5,7 @@
 
 <button class="icon-button container" on:click>
     <img
-        src={`/icons/${icon}.svg`}
+        src={`icons/${icon}.svg`}
         class={`icon ${size}`}
         alt={`${icon} icon`}
     />
