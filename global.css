@@ -4,6 +4,8 @@
 	--accent-color: #3D84EE;
 	--accent-color1: #3476d8;
 	--bg-color: #7dadf437;
+
+	--light-gradient-bg: linear-gradient(to bottom, #AECFFF,#FFFFFF,#FFFFFF);
 }
 
 /* normalize */
