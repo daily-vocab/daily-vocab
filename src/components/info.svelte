@@ -3,13 +3,22 @@
 
 
 
+
+
+
+
+
+
+
+
+
   export let type;
   export let icon
   export let message;
 </script>
 
 <div class={`container ${type}`}>
-  <IconButton {icon}/>
+  <IconButton {icon} size='small' />
   <div class='message'>{message}</div>
 </div>
 
@@ -18,8 +27,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-
-    border-radius: 1.5rem;
+    border-radius: 1rem;
     background-color: var(--accent-color);
   }
 

@@ -2,10 +2,9 @@
   import { goto } from "@sapper/app";
   import { tick } from 'svelte';
   import IconButton from '../../../components/icon-button.svelte';
+  import Info from "../../../components/info.svelte";
   import { vocab } from '../../../stores/vocab';
   import { vocabSchema } from '../../../utils/word-validator';
-
-
 
   let word = ''
   let usage = ''
@@ -35,7 +34,17 @@
 <section class="container words-add">
   <h1>add a new word</h1>
 
-  {validationMessage}
+  {#if validationMessage === null}
+    <Info
+      message='no issues so far'
+      icon='tick--light'
+      type='success' />
+  {:else}
+    <Info
+      message={validationMessage}
+      type='warning'
+      icon='warning--light' />
+  {/if}
   <form>
     <div>what's the word?</div>
     <input type='text' bind:value={word} on:input={async () => { await tick(); word = word.toLowerCase(); validateInputs() }}/>
@@ -72,7 +81,7 @@
     margin-bottom: 0;
   }
 
-  :global(.words-add button) {
+  :global(.words-add form button) {
     align-self: flex-end;
     position:absolute;
     bottom: 1rem;

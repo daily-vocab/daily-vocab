@@ -14,12 +14,18 @@
         options: ['add', 'warn', 'tick']
       }
     },
+    size: { 
+      control: {
+        type: 'select',
+        options: ['small', 'regular']
+      }
+    },
     onClick: { action: 'onClick'}
   }}
 />
 
 <Template let:args>
-  <IconButton icon={args.icon} on:click={args.onClick} />
+  <IconButton {...args} on:click={args.onClick} />
 </Template>
 
-<Story name="Main" args={{icon: 'add'}} />
+<Story name="Main" args={{icon: 'add', size: 'regular'}} />
