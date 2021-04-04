@@ -3,10 +3,13 @@
   import { tick } from 'svelte';
   import IconButton from '../../../components/icon-button.svelte';
   import { vocab } from '../../../stores/vocab';
+  import { vocabSchema } from '../../../utils/word-validator';
+
 
 
   let word = ''
   let usage = ''
+  let validationMessage = null
 
   const handleAddVocab = async (event) => {
     event.preventDefault();
@@ -16,18 +19,30 @@
     })
     await goto('home')
   }
+
+  const validateInputs = async () => {
+    try {
+      validationMessage = '';
+      await vocabSchema.validate({
+        word, usage
+      })
+    }
+    catch(error) {
+      validationMessage = error.message
+    }
+  }
 </script>
 <section class="container words-add">
   <h1>add a new word</h1>
 
+  {validationMessage}
   <form>
     <div>what's the word?</div>
-    <input type='text' bind:value={word} on:input={async () => { await tick(); word = word.toLowerCase()}}/>
+    <input type='text' bind:value={word} on:input={async () => { await tick(); word = word.toLowerCase(); validateInputs() }}/>
     <div>let's use it in a sentence</div>
-    <textarea class='usage-input' type='text' bind:value={usage} on:input={async () => {await tick();usage = usage.toLowerCase()}} />
+    <textarea class='usage-input' type='text' bind:value={usage} on:input={async () => {await tick();usage = usage.toLowerCase();validateInputs() }} />
     <IconButton icon='tick' on:click={handleAddVocab}/>
   </form>
-
 </section>
 
 <style>
