@@ -9,6 +9,7 @@
   let word = ''
   let usage = ''
   let validationMessage = null
+  let touched = false;
 
   const handleAddVocab = async (event) => {
     event.preventDefault();
@@ -21,10 +22,11 @@
 
   const validateInputs = async () => {
     try {
-      validationMessage = '';
+      touched = true
       await vocabSchema.validate({
         word, usage
       })
+      validationMessage = null;
     }
     catch(error) {
       validationMessage = error.message
@@ -42,15 +44,19 @@
   {:else}
     <Info
       message={validationMessage}
-      type='warning'
-      icon='warning--light' />
+      type='warn'
+      icon='warn--light' />
   {/if}
   <form>
     <div>what's the word?</div>
     <input type='text' bind:value={word} on:input={async () => { await tick(); word = word.toLowerCase(); validateInputs() }}/>
     <div>let's use it in a sentence</div>
     <textarea class='usage-input' type='text' bind:value={usage} on:input={async () => {await tick();usage = usage.toLowerCase();validateInputs() }} />
-    <IconButton icon='tick' on:click={handleAddVocab}/>
+    {#if !touched || validationMessage !== null}
+      <IconButton icon='warn' on:click={(event) => {event.preventDefault();}}/>
+    {:else}
+      <IconButton icon='tick' on:click={handleAddVocab}/>
+    {/if}
   </form>
 </section>
 
@@ -63,6 +69,7 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    margin-top: 0.25rem;
   }
 
   input, textarea {
