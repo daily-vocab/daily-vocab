@@ -11,6 +11,7 @@
 	<h1>daily vocab!</h1>
 	<p>Learn a new word everyday!</p>
 	<button on:click={async () => { await goto('home') }}>Get Started</button>
+	<button on:click={async () => { await goto('settings') }}>Settings</button>
 </section>
 
 <style>
@@ -34,6 +35,11 @@
 		text-transform: lowercase;
 		font-weight: 700;
 		margin: 0 0 0.5em 0;
+	}
+
+	button {
+		margin: 0.5rem;
+		width: 50%;
 	}
 
 	:global(main) {
