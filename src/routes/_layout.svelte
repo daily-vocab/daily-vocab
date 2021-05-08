@@ -38,7 +38,6 @@
 	/* global styles for tag names */
 
 	:global(button) {
-		cursor: pointer;
 		font-weight: 100;
 		background-color: #7dadf437;
 		border: none;

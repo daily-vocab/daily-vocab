@@ -1,9 +1,28 @@
+<script>
+  import { onMount } from "svelte";
+  import { vocab } from "../../stores/vocab";
+  let empty = false;
+
+  onMount(() => {
+    if ($vocab.length === 0) {
+      empty = true;
+    }
+  });
+
+  const clearAllVocabs = async () => {
+    await vocab.clearVocabs();
+    empty = true;
+  };
+</script>
+
 <section>
   <h1>settings</h1>
 
   <div class="setting">
     <p>clear all vocabs</p>
-    <img src="icons/delete--color.svg" alt="clear all vocab icon button" />
+    <button on:click={() => clearAllVocabs()} class:empty disabled={empty}>
+      <img src="icons/delete--color.svg" alt="clear all vocab icon button" />
+    </button>
   </div>
 </section>
 
@@ -12,8 +31,12 @@
     display: flex;
     justify-content: space-between;
   }
+  button {
+    padding: 0;
+    align-self: center;
+  }
 
-  .setting > img {
-    cursor: pointer;
+  button.empty {
+    filter: grayscale(100%);
   }
 </style>

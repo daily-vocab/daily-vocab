@@ -27,5 +27,11 @@ export const vocab = {
         localStorage.setItem(VOCAB_STORE_KEY, vocabString)
         return updatedVocabItems
     })
-  }
+  },
+  clearVocabs: async () => new Promise((resolve) => {
+    localStorage.setItem(VOCAB_STORE_KEY, '[]')
+    const updatedVocabs = []
+    set(updatedVocabs)
+    resolve(updatedVocabs)
+  })
 }
