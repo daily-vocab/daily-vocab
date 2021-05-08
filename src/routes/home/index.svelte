@@ -1,20 +1,20 @@
 <script>
-    import { goto } from '@sapper/app';
-    import { DateTime } from 'luxon';
+    import { goto } from "@sapper/app";
+    import { DateTime } from "luxon";
     import Card from "../../components/card.svelte";
     import Ellipsis from "../../components/ellipsis.svelte";
     import IconButton from "../../components/icon-button.svelte";
-    import { vocab } from '../../stores/vocab';
-
-
-
+    import { vocab } from "../../stores/vocab";
 </script>
 
 <section>
     <h1>welcome back</h1>
 
     {#if $vocab.length === 0}
-    <p>uh oh 🙊 looks like you don't have any vocab yet!  No worries, let's add one now! 😃</p>
+        <p>
+            uh oh 🙊 looks like you don't have any vocab yet! No worries, let's
+            add one now! 😃
+        </p>
     {/if}
 
     {#each $vocab as vocabItem}
@@ -23,18 +23,20 @@
                 <div class="vocab_header">
                     <div class="vocab_word">{vocabItem.word}</div>
                     <div class="vocab_createdAt">
-                        {DateTime.fromISO(vocabItem.createdAt).toRelativeCalendar()}
+                        {DateTime.fromISO(
+                            vocabItem.createdAt
+                        ).toRelativeCalendar()}
                     </div>
                 </div>
 
-                <p class="vocab_sentence">{vocabItem.sentences[0].text}</p>
+                <p class="vocab_sentence">{vocabItem.usage}</p>
             </Card>
         </div>
     {/each}
 
-    <div class='new-vocab'>
+    <div class="new-vocab">
         <Ellipsis />
-        <IconButton icon='add' on:click={() => goto('words/add')}/>
+        <IconButton icon="add" on:click={() => goto("words/add")} />
     </div>
 </section>
 

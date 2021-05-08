@@ -1,76 +1,70 @@
 <script>
   import { goto } from "@sapper/app";
-  import { tick } from 'svelte';
-  import IconButton from '../../../components/icon-button.svelte';
+  import { tick } from "svelte";
+  import IconButton from "../../../components/icon-button.svelte";
   import Info from "../../../components/info.svelte";
-  import { vocab } from '../../../stores/vocab';
-  import { vocabSchema } from '../../../utils/word-validator';
+  import { vocab } from "../../../stores/vocab";
+  import { vocabSchema } from "../../../utils/word-validator";
 
-  let word = ''
-  let usage = ''
-  let validationMessage = null
+  let word = "";
+  let usage = "";
+  let notes = "";
+  let validationMessage = null;
   let touched = false;
 
   const handleAddVocab = async (event) => {
     event.preventDefault();
     vocab.addVocab({
-      word: word.trim(), 
-      usage: usage.trim()
-    })
-    await goto('home')
-  }
+      word: word.trim(),
+      usage: usage.trim(),
+      notes: notes.trim(),
+    });
+    await goto("home");
+  };
 
   const validateInputs = async () => {
     try {
-      touched = true
+      touched = true;
       await vocabSchema.validate({
-        word, usage
-      })
+        word,
+        usage,
+      });
       validationMessage = null;
+    } catch (error) {
+      validationMessage = error.message;
     }
-    catch(error) {
-      validationMessage = error.message
-    }
-  }
+  };
 </script>
+
 <section class="container words-add">
   <h1>add a new word</h1>
 
   {#if !touched}
-    <Info
-      message={'let\'s go'}
-      icon='warn--light'
-      type='warn' />
+    <Info message={"let's go"} icon="warn--light" type="warn" />
   {:else if validationMessage}
-    <Info
-      message={validationMessage}
-      type='warn'
-      icon='warn--light' />
+    <Info message={validationMessage} type="warn" icon="warn--light" />
   {:else}
-    <Info
-      message={'looks like we\'re good'}
-      type='success'
-      icon='tick--light' />
+    <Info message={"looks like we're good"} type="success" icon="tick--light" />
   {/if}
   <form>
-    <div>what's the word?</div>
+    <p>what's the word?</p>
     <input
-      type='text'
+      type="text"
       bind:value={word}
       on:input={async () => {
-         await tick();
-         word = word.toLowerCase();
-         validateInputs() 
-      }} 
+        await tick();
+        word = word.toLowerCase();
+        validateInputs();
+      }}
       on:focusout={async () => {
         await tick();
-        word = word.trim()
+        word = word.trim();
       }}
     />
-    <div>let's use it in a sentence</div>
+    <p>let's use it in a sentence</p>
     <textarea
-      class='usage-input'
-      type='text'
+      class="usage-input"
+      type="text"
       bind:value={usage}
       on:input={async () => {
         await tick();
@@ -78,10 +72,26 @@
         validateInputs();
       }}
     />
+    <p>explanation and notes (optional)</p>
+    <textarea
+      class="usage-input"
+      type="text"
+      bind:value={notes}
+      on:input={async () => {
+        await tick();
+        usage = usage.toLowerCase();
+        validateInputs();
+      }}
+    />
     {#if !touched || validationMessage !== null}
-      <IconButton icon='warn' on:click={(event) => {event.preventDefault();}}/>
+      <IconButton
+        icon="warn"
+        on:click={(event) => {
+          event.preventDefault();
+        }}
+      />
     {:else}
-      <IconButton icon='tick' on:click={handleAddVocab}/>
+      <IconButton icon="tick" on:click={handleAddVocab} />
     {/if}
   </form>
 </section>
@@ -98,14 +108,14 @@
     margin-top: 0.25rem;
   }
 
-  input, textarea {
+  input,
+  textarea {
     border: none;
     border-radius: 0.5rem;
     font-size: 1.5rem;
     line-height: 2.5rem;
-    margin: 1rem 0;
     align-self: stretch;
-    padding: 0.25rem 1rem; 
+    padding: 0.25rem 1rem;
     color: black;
   }
 
@@ -116,7 +126,7 @@
 
   :global(.words-add form button) {
     align-self: flex-end;
-    position:absolute;
+    position: absolute;
     bottom: 1rem;
     margin: 1rem;
     right: 1rem;
