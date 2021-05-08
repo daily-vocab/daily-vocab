@@ -1,13 +1,10 @@
 <script>
-	import { onMount } from 'svelte';
-	import { vocab } from '../stores/vocab';
-
-
-	export let segment;
+	import { onMount } from "svelte";
+	import { vocab } from "../stores/vocab";
 
 	onMount(async () => {
-		await vocab.loadVocab()
-	})
+		await vocab.loadVocab();
+	});
 </script>
 
 <main>
