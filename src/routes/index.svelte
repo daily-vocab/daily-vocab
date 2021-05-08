@@ -1,6 +1,5 @@
 <script>
-	import { goto } from '@sapper/app';
-
+	import { goto } from "@sapper/app";
 </script>
 
 <svelte:head>
@@ -10,8 +9,16 @@
 <section>
 	<h1>daily vocab!</h1>
 	<p>Learn a new word everyday!</p>
-	<button on:click={async () => { await goto('home') }}>Get Started</button>
-	<button on:click={async () => { await goto('settings') }}>Settings</button>
+	<button
+		on:click={async () => {
+			await goto("home");
+		}}>Get Started</button
+	>
+	<button
+		on:click={async () => {
+			await goto("settings");
+		}}>Settings</button
+	>
 </section>
 
 <style>
@@ -40,10 +47,6 @@
 	button {
 		margin: 0.5rem;
 		width: 50%;
-	}
-
-	:global(main) {
-		background: var(--light-gradient-bg);
 	}
 
 	@media (min-width: 480px) {
