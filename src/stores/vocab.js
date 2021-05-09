@@ -1,4 +1,5 @@
 import { DateTime } from "luxon";
+import { v4 as uuid } from 'uuid'
 import { writable } from "svelte/store";
 
 const VOCAB_STORE_KEY = 'dv_vocabStoreKey'
@@ -18,6 +19,7 @@ export const vocab = {
   addVocab: (vocab) => {
     update(vocabItems => {
       const vocabToAdd = {
+        id: uuid(),
         word: vocab.word,
         usage: vocab.usage,
         notes: vocab.notes,
