@@ -9,7 +9,7 @@
 </script>
 
 <section class="home">
-    <h1>welcome back</h1>
+    <h1>daily vocab</h1>
 
     <div
         class={$vocab.length === 0
