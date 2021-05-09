@@ -8,7 +8,7 @@
     import { vocab } from "../../stores/vocab";
 </script>
 
-<section>
+<section class="home">
     <h1>welcome back</h1>
 
     <div
@@ -40,10 +40,7 @@
             </div>
         {/each}
 
-        <div class="new-vocab">
-            <Ellipsis />
-            <IconButton icon="add" on:click={() => goto("words/add")} />
-        </div>
+        <IconButton icon="add" on:click={() => goto("words/add")} />
     </div>
 </section>
 
@@ -92,5 +89,12 @@
     .novocab_message {
         text-align: center;
         margin: 2rem 1rem;
+    }
+
+    :global(.home button) {
+        position: fixed;
+        margin: 1rem;
+        bottom: 1rem;
+        right: 1rem;
     }
 </style>
