@@ -3,7 +3,8 @@
   import { vocab } from "../../stores/vocab";
   let empty = false;
 
-  onMount(() => {
+  onMount(async () => {
+    await vocab.loadVocab();
     if ($vocab.length === 0) {
       empty = true;
     }
