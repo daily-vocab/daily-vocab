@@ -19,7 +19,7 @@
       usage: usage.trim(),
       notes: notes.trim(),
     });
-    await goto("home");
+    await goto("home", { replaceState: true });
   };
 
   const validateInputs = async () => {
