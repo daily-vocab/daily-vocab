@@ -29,7 +29,7 @@ jobs:
         run: npm i
 
       - name: export site
-        run: npm run export -- --basepath ${{ env.DV_APP_NAME }} --entry "/ /home /words/add"
+        run: npm run export -- --basepath ${{ env.DV_APP_NAME }} --entry "/ /home /words/add /settings"
 
       - name: upload daily-vocab site artefact
         uses: actions/upload-artifact@v1
