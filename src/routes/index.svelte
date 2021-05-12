@@ -1,5 +1,7 @@
 <script>
 	import { goto } from "@sapper/app";
+	import { version } from "../../package.json";
+
 </script>
 
 <svelte:head>
@@ -19,6 +21,7 @@
 			await goto("settings");
 		}}>Settings</button
 	>
+	<p class="version">v{version}</p>
 </section>
 
 <style>
@@ -49,9 +52,15 @@
 		width: 50%;
 	}
 
+	.version {
+		font-size: 1rem;
+		font-weight: 800;
+	}
+
 	@media (min-width: 480px) {
 		h1 {
 			font-size: 4em;
 		}
 	}
+
 </style>
