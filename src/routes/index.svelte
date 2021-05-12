@@ -54,7 +54,7 @@
 	}
 
 	.version {
-		font-size: 1rem;
+		font-size: 0.8rem;
 		font-weight: 800;
 	}
 
