@@ -1,7 +1,7 @@
 {
   "name": "daily-vocab",
   "description": "daily-vocab",
-  "version": "0.0.1-beta",
+  "version": "0.0.2-beta",
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build --legacy",
