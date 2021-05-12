@@ -12,6 +12,7 @@
 	<h1>daily vocab!</h1>
 	<p>Learn a new word everyday!</p>
 	<button
+		class="primary"
 		on:click={async () => {
 			await goto("home");
 		}}>Get Started</button
