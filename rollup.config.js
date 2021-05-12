@@ -7,6 +7,7 @@ import svelte from 'rollup-plugin-svelte';
 import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
+import json from '@rollup/plugin-json';
 import pkg from './package.json';
 
 const mode = process.env.NODE_ENV;
@@ -23,6 +24,7 @@ export default {
 		input: config.client.input(),
 		output: config.client.output(),
 		plugins: [
+			json(),
 			replace({
 				preventAssignment: true,
 				values:{
@@ -76,6 +78,7 @@ export default {
 		input: config.server.input(),
 		output: config.server.output(),
 		plugins: [
+			json(),
 			replace({
 				preventAssignment: true,
 				values:{
@@ -110,6 +113,7 @@ export default {
 		input: config.serviceworker.input(),
 		output: config.serviceworker.output(),
 		plugins: [
+			json(),
 			resolve(),
 			replace({
 				preventAssignment: true,
