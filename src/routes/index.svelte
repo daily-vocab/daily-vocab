@@ -21,6 +21,11 @@
 			await goto("settings");
 		}}>Settings</button
 	>
+	<button
+		on:click={async () => {
+			await goto("about");
+		}}>About</button
+	>
 	<p class="version">v{version}</p>
 </section>
 
