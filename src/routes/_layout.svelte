@@ -5,6 +5,7 @@
 	onMount(async () => {
 		await vocab.loadVocab();
 	});
+
 </script>
 
 <main>
@@ -38,7 +39,7 @@
 	/* global styles for tag names */
 
 	:global(button) {
-		font-weight: 100;
+		font-weight: 800;
 		background-color: #7dadf437;
 		border: none;
 		padding: 1rem 2rem;
@@ -46,6 +47,11 @@
 		font-size: 0.8rem;
 		transition: transform 0.2s linear, background-color 0.2s linear;
 		color: var(--accent-color);
+	}
+
+	:global(button.primary) {
+		background-color: #7ca8eb;
+		color: white;
 	}
 
 	:global(button:active) {
@@ -70,4 +76,5 @@
 		flex-direction: column;
 		padding: 0.5rem;
 	}
+
 </style>

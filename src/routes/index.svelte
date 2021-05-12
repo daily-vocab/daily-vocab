@@ -12,6 +12,7 @@
 	<h1>daily vocab!</h1>
 	<p>Learn a new word everyday!</p>
 	<button
+		class="primary"
 		on:click={async () => {
 			await goto("home");
 		}}>Get Started</button
@@ -58,7 +59,7 @@
 	}
 
 	.version {
-		font-size: 1rem;
+		font-size: 0.8rem;
 		font-weight: 800;
 	}
 
