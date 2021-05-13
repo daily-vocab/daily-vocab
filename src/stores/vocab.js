@@ -18,14 +18,30 @@ export const vocab = {
   },
   addVocab: (vocab) => {
     update(vocabItems => {
-      const vocabToAdd = {
-        id: uuid(),
-        word: vocab.word,
-        usage: vocab.usage,
-        notes: vocab.notes,
-        createdAt: DateTime.local()
+      let updatedVocabItems = []
+
+      if (vocab.id) {
+        updatedVocabItems = vocabItems.map(v => {
+          if (v.id !== vocab.id) return v;
+          return {
+            ...v,
+            word: vocab.word,
+            usage: vocab.usage,
+            notes: vocab.notes,
+          }
+        })
       }
-      const updatedVocabItems = [...vocabItems, vocabToAdd]
+
+      else {
+        const vocabToAdd = {
+          id: uuid(),
+          word: vocab.word,
+          usage: vocab.usage,
+          notes: vocab.notes,
+          createdAt: DateTime.local()
+        }
+        updatedVocabItems = [...vocabItems, vocabToAdd]
+      }
       const vocabString = JSON.stringify(updatedVocabItems)
       localStorage.setItem(VOCAB_STORE_KEY, vocabString)
       return updatedVocabItems

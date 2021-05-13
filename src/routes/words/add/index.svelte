@@ -1,11 +1,28 @@
 <script>
   import { goto } from "@sapper/app";
-  import { tick } from "svelte";
+  import { onMount, tick } from "svelte";
   import IconButton from "../../../components/icon-button.svelte";
   import Info from "../../../components/info.svelte";
   import { vocab } from "../../../stores/vocab";
   import { vocabSchema } from "../../../utils/word-validator";
+  import * as queryString from "query-string";
 
+  onMount(async () => {
+    const parsedQueryString = queryString.parse(location.search);
+    await vocab.loadVocab();
+
+    if (parsedQueryString.id) {
+      const matchingVocab = $vocab.find((v) => v.id === parsedQueryString.id);
+      if (matchingVocab) {
+        vocabId = parsedQueryString.id;
+        word = matchingVocab.word;
+        usage = matchingVocab.usage;
+        notes = matchingVocab.notes;
+      }
+    }
+  });
+
+  let vocabId;
   let word = "";
   let usage = "";
   let notes = "";
@@ -15,6 +32,7 @@
   const handleAddVocab = async (event) => {
     event.preventDefault();
     vocab.addVocab({
+      id: vocabId,
       word: word.trim(),
       usage: usage.trim(),
       notes: notes.trim(),
@@ -34,10 +52,15 @@
       validationMessage = error.message;
     }
   };
+
 </script>
 
 <section class="container words-add">
-  <h1>add a new word</h1>
+  {#if !vocabId}
+    <h1>add a new word</h1>
+  {:else}
+    <h1>edit a word</h1>
+  {/if}
 
   {#if !touched}
     <Info message={"let's go"} icon="warn--light" type="warn" />
@@ -131,4 +154,5 @@
     margin: 1rem;
     right: 1rem;
   }
+
 </style>

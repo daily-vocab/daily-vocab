@@ -1,11 +1,9 @@
 <script>
     import { goto } from "@sapper/app";
     import { DateTime } from "luxon";
-    import { onMount } from "svelte";
-    import Card from "../../components/card.svelte";
-    import Ellipsis from "../../components/ellipsis.svelte";
     import IconButton from "../../components/icon-button.svelte";
     import { vocab } from "../../stores/vocab";
+
 </script>
 
 <section class="home">
@@ -25,7 +23,7 @@
 
         {#each $vocab as vocabItem}
             <div class="vocab">
-                <Card>
+                <button on:click={() => goto(`words/add?id=${vocabItem.id}`)}>
                     <div class="vocab_header">
                         <div class="vocab_word">{vocabItem.word}</div>
                         <div class="vocab_createdAt">
@@ -34,9 +32,8 @@
                             ).toRelativeCalendar()}
                         </div>
                     </div>
-
                     <p class="vocab_sentence">{vocabItem.usage}</p>
-                </Card>
+                </button>
             </div>
         {/each}
 
@@ -52,6 +49,7 @@
     .vocab_header {
         display: flex;
         justify-content: space-between;
+        align-self: stretch;
     }
 
     .vocab_word {
@@ -65,14 +63,6 @@
 
     .vocab_sentence {
         margin: 1rem 0 0 0;
-    }
-
-    .new-vocab {
-        display: flex;
-        flex-direction: column;
-        align-self: center;
-        position: relative;
-        top: -1.25rem;
     }
 
     .home_content {
@@ -91,10 +81,19 @@
         margin: 2rem 1rem;
     }
 
-    :global(.home button) {
+    :global(.home .icon-button) {
         position: fixed;
         margin: 1rem;
         bottom: 1rem;
         right: 1rem;
     }
+
+    .vocab button {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+
 </style>
