@@ -23,8 +23,7 @@
 
         {#each $vocab as vocabItem}
             <div class="vocab">
-                <button>
-                    <!-- <Card> -->
+                <button on:click={() => goto(`words/add?id=${vocabItem.id}`)}>
                     <div class="vocab_header">
                         <div class="vocab_word">{vocabItem.word}</div>
                         <div class="vocab_createdAt">
@@ -34,7 +33,6 @@
                         </div>
                     </div>
                     <p class="vocab_sentence">{vocabItem.usage}</p>
-                    <!-- </Card> -->
                 </button>
             </div>
         {/each}
