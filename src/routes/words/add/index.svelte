@@ -56,7 +56,11 @@
 </script>
 
 <section class="container words-add">
-  <h1>add a new word</h1>
+  {#if !vocabId}
+    <h1>add a new word</h1>
+  {:else}
+    <h1>edit a word</h1>
+  {/if}
 
   {#if !touched}
     <Info message={"let's go"} icon="warn--light" type="warn" />
