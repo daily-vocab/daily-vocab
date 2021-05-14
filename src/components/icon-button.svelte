@@ -1,12 +1,13 @@
 <script>
     export let icon;
-    export let size = 'regular';
+    export let size = "regular";
+
 </script>
 
-<button class="icon-button container" on:click>
+<button class={`icon-button container ${icon}-icon`} on:click>
     <img
         src={`icons/${icon}.svg`}
-        class={`icon ${size}`}
+        class={`icon ${size} ${icon}-icon-img`}
         alt={`${icon} icon`}
     />
 </button>
@@ -15,7 +16,7 @@
     .container {
         background-color: var(--accent-color);
         display: flex;
-        flex-direction: column; 
+        flex-direction: column;
         padding: 0;
         margin: 0;
     }
@@ -37,4 +38,5 @@
         width: 1.5rem;
         color: white;
     }
+
 </style>

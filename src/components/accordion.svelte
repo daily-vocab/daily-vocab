@@ -4,6 +4,7 @@
 </script>
 
 <button
+  class="cmp-accordion"
   on:click={() => {
     if (contentBinding) {
       console.log({

@@ -25,7 +25,6 @@
         {#each $vocab as vocabItem}
             <div class="vocab">
                 <Accordion>
-                    <!-- <button on:click={() => goto(`words/add?id=${vocabItem.id}`)}> -->
                     <div slot="header" class="vocab_header">
                         <div class="vocab_title">
                             <div class="vocab_word">{vocabItem.word}</div>
@@ -40,15 +39,28 @@
                         </p>
                     </div>
 
-                    <p slot="content" class="vocab_sentence">
-                        {vocabItem.notes}
-                    </p>
+                    <div slot="content" class="vocab_sentence">
+                        <p>{vocabItem.notes}</p>
+                        <div class="vocab_actions">
+                            <IconButton
+                                icon="edit"
+                                on:click={async () => {
+                                    await goto(`words/add?id=${vocabItem.id}`);
+                                }}
+                            />
+                            <IconButton
+                                icon="delete--color"
+                                on:click={async () => {
+                                    await goto(`words/add?id=${vocabItem.id}`);
+                                }}
+                            />
+                        </div>
+                    </div>
                 </Accordion>
-                <!-- </button> -->
             </div>
         {/each}
 
-        <IconButton icon="add" on:click={() => goto("words/add")} />
+        <IconButton icon="add" on:click={() => goto(`words/add`)} />
     </div>
 </section>
 
@@ -102,19 +114,27 @@
         justify-content: space-between;
     }
 
-    :global(.home .icon-button) {
+    /* vocab action button */
+    .vocab_actions {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    /* FAB button styling */
+    :global(section.home .add-icon) {
         position: fixed;
-        margin: 1rem;
         bottom: 1rem;
         right: 1rem;
     }
 
-    :global(section.home .vocab button) {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        padding: 1rem;
-        border-radius: 1rem;
+    /* vocab action buttons styling */
+
+    :global(section.home .cmp-accordion) {
+        padding: 1rem 0.5rem;
+    }
+
+    :global(section.home .vocab .icon-button) {
+        margin: 0 0.25rem;
     }
 
 </style>
