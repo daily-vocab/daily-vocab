@@ -44,12 +44,14 @@
                         <div class="vocab_actions">
                             <IconButton
                                 icon="edit"
+                                size="small"
                                 on:click={async () => {
                                     await goto(`words/add?id=${vocabItem.id}`);
                                 }}
                             />
                             <IconButton
                                 icon="delete--color"
+                                size="small"
                                 on:click={() => vocab.deleteVocab(vocabItem.id)}
                             />
                         </div>
