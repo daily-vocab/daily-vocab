@@ -50,9 +50,7 @@
                             />
                             <IconButton
                                 icon="delete--color"
-                                on:click={async () => {
-                                    await goto(`words/add?id=${vocabItem.id}`);
-                                }}
+                                on:click={() => vocab.deleteVocab(vocabItem.id)}
                             />
                         </div>
                     </div>
