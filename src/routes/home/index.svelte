@@ -2,6 +2,7 @@
     import { goto } from "@sapper/app";
     import { DateTime } from "luxon";
     import IconButton from "../../components/icon-button.svelte";
+    import Accordion from "../../components/accordion.svelte";
     import { vocab } from "../../stores/vocab";
 
 </script>
@@ -23,17 +24,27 @@
 
         {#each $vocab as vocabItem}
             <div class="vocab">
-                <button on:click={() => goto(`words/add?id=${vocabItem.id}`)}>
-                    <div class="vocab_header">
-                        <div class="vocab_word">{vocabItem.word}</div>
-                        <div class="vocab_createdAt">
-                            {DateTime.fromISO(
-                                vocabItem.createdAt
-                            ).toRelativeCalendar()}
+                <Accordion>
+                    <!-- <button on:click={() => goto(`words/add?id=${vocabItem.id}`)}> -->
+                    <div slot="header" class="vocab_header">
+                        <div class="vocab_title">
+                            <div class="vocab_word">{vocabItem.word}</div>
+                            <div class="vocab_createdAt">
+                                {DateTime.fromISO(
+                                    vocabItem.createdAt
+                                ).toRelativeCalendar()}
+                            </div>
                         </div>
+                        <p class="vocab_sentence">
+                            {vocabItem.usage}
+                        </p>
                     </div>
-                    <p class="vocab_sentence">{vocabItem.usage}</p>
-                </button>
+
+                    <p slot="content" class="vocab_sentence">
+                        {vocabItem.notes}
+                    </p>
+                </Accordion>
+                <!-- </button> -->
             </div>
         {/each}
 
@@ -48,21 +59,25 @@
 
     .vocab_header {
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         align-self: stretch;
     }
 
     .vocab_word {
         font-weight: 700;
+        font-size: 1.5rem;
     }
 
     .vocab_createdAt {
         font-size: 0.75rem;
-        align-self: flex-start;
+        align-self: center;
     }
 
     .vocab_sentence {
         margin: 1rem 0 0 0;
+        text-align: start;
+        font-size: 1rem;
     }
 
     .home_content {
@@ -81,6 +96,12 @@
         margin: 2rem 1rem;
     }
 
+    .vocab_title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
     :global(.home .icon-button) {
         position: fixed;
         margin: 1rem;
@@ -88,7 +109,7 @@
         right: 1rem;
     }
 
-    .vocab button {
+    :global(section.home .vocab button) {
         display: flex;
         flex-direction: column;
         width: 100%;
