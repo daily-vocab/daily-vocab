@@ -27,7 +27,9 @@
 			await goto("about");
 		}}>About</button
 	>
+
 	<p class="version">v{version}</p>
+	<button class="meta-button"> CHANGELOG </button>
 </section>
 
 <style>
@@ -40,7 +42,6 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-
 		align-self: center;
 	}
 
@@ -57,10 +58,17 @@
 		margin: 0.5rem;
 		width: 50%;
 	}
-
 	.version {
+		margin-top: 2rem;
+		font-size: 0.8rem;
+	}
+
+	.meta-button {
+		padding: 0.5rem;
+		width: auto;
 		font-size: 0.8rem;
 		font-weight: 800;
+		margin: 0;
 	}
 
 	@media (min-width: 480px) {
