@@ -52,5 +52,13 @@ export const vocab = {
     const updatedVocabs = []
     set(updatedVocabs)
     resolve(updatedVocabs)
-  })
+  }),
+  deleteVocab: (vocabId) => {
+    update(vocabItems => {
+      let updatedVocabItems = vocabItems.filter(v => v.id !== vocabId)
+      const vocabString = JSON.stringify(updatedVocabItems)
+      localStorage.setItem(VOCAB_STORE_KEY, vocabString)
+      return updatedVocabItems
+    })
+  },
 }
