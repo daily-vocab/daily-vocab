@@ -1,0 +1,30 @@
+{
+  "changelog": [
+    {
+      "version": "v0.0.4-beta",
+      "changes": [
+        "Delete a Vocab",
+        "Style facelift"
+      ]
+    },
+    {
+      "version": "v0.0.3-beta",
+      "changes": [
+        "Edit a Vocab"
+      ]
+    },
+    {
+      "version": "v0.0.2-beta",
+      "changes": [
+        "Add an about page"
+      ]
+    },
+    {
+      "version": "v0.0.1-beta",
+      "changes": [
+        "Basic app structure",
+        "Add a vocab"
+      ]
+    }
+  ]
+}

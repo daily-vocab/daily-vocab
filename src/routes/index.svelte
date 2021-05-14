@@ -29,7 +29,14 @@
 	>
 
 	<p class="version">v{version}</p>
-	<button class="meta-button"> CHANGELOG </button>
+	<button
+		class="meta-button"
+		on:click={async () => {
+			await goto("changelog");
+		}}
+	>
+		CHANGELOG
+	</button>
 </section>
 
 <style>
