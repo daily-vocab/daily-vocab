@@ -63,11 +63,11 @@
   {/if}
 
   {#if !touched}
-    <Info message={"let's go"} icon="warn--light" type="warn" />
+    <Info message={"let's go"} icon="warn" type="warn" />
   {:else if validationMessage}
-    <Info message={validationMessage} type="warn" icon="warn--light" />
+    <Info message={validationMessage} type="warn" icon="warn" />
   {:else}
-    <Info message={"looks like we're good"} type="success" icon="tick--light" />
+    <Info message={"looks like we're good"} type="success" icon="tick" />
   {/if}
   <form>
     <p>what's the word?</p>
@@ -108,7 +108,7 @@
     />
     {#if !touched || validationMessage !== null}
       <IconButton
-        icon="warn"
+        icon="tick"
         on:click={(event) => {
           event.preventDefault();
         }}
