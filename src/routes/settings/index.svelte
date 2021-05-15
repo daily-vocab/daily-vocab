@@ -12,8 +12,14 @@
   });
 
   const clearAllVocabs = async () => {
-    await vocab.clearVocabs();
-    empty = true;
+    if ($vocab.length > 0) {
+      const sure = confirm("are you sure you want to clear all your vocabs?");
+      if (sure) {
+        await vocab.clearVocabs();
+        alert("all your vocabs have been cleared");
+        empty = true;
+      }
+    }
   };
 
   const exportMyVocabs = async () => {
