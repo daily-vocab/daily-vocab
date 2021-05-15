@@ -31,5 +31,6 @@
     type: "success",
     message: "no issues so far",
     icon: "tick",
+    iconColor: "#9CDFAB",
   }}
 />
