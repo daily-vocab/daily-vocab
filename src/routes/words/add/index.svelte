@@ -63,11 +63,21 @@
   {/if}
 
   {#if !touched}
-    <Info message={"let's go"} icon="warn--light" type="warn" />
+    <Info message={"let's go"} icon="warn" type="warn" iconColor="#FFF1CC" />
   {:else if validationMessage}
-    <Info message={validationMessage} type="warn" icon="warn--light" />
+    <Info
+      message={validationMessage}
+      type="warn"
+      icon="warn"
+      iconColor="#FFF1CC"
+    />
   {:else}
-    <Info message={"looks like we're good"} type="success" icon="tick--light" />
+    <Info
+      message={"looks like we're good"}
+      type="success"
+      icon="tick"
+      iconColor="#9CDFAB"
+    />
   {/if}
   <form>
     <p>what's the word?</p>
@@ -108,13 +118,14 @@
     />
     {#if !touched || validationMessage !== null}
       <IconButton
-        icon="warn"
+        icon="tick"
         on:click={(event) => {
           event.preventDefault();
         }}
+        textColor="white"
       />
     {:else}
-      <IconButton icon="tick" on:click={handleAddVocab} />
+      <IconButton icon="tick" on:click={handleAddVocab} textColor="white" />
     {/if}
   </form>
 </section>
@@ -151,7 +162,6 @@
     align-self: flex-end;
     position: absolute;
     bottom: 1rem;
-    margin: 1rem;
     right: 1rem;
   }
 

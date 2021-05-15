@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import IconButton from "../../components/icon-button.svelte";
   import { vocab } from "../../stores/vocab";
   let empty = false;
 
@@ -23,6 +24,7 @@
       alert("unable to export your vocabs 😭");
     }
   };
+
 </script>
 
 <section>
@@ -30,16 +32,19 @@
 
   <div class="setting">
     <p>clear all vocabs</p>
-    <button on:click={() => clearAllVocabs()} class:empty disabled={empty}>
-      <img src="icons/delete--color.svg" alt="clear all vocab icon button" />
-    </button>
+    <IconButton
+      icon="delete"
+      size="small"
+      textColor="white"
+      on:click={() => clearAllVocabs()}
+      disabled={empty}
+    />
+    <!-- class:empty -->
   </div>
 
   <div class="setting">
     <p>export my vocabs</p>
-    <button on:click={() => exportMyVocabs()}>
-      <img src="icons/copy.svg" alt="clear all vocab icon button" />
-    </button>
+    <IconButton icon="copy" size="small" on:click={() => exportMyVocabs()} />
   </div>
 </section>
 
@@ -47,10 +52,7 @@
   .setting {
     display: flex;
     justify-content: space-between;
-  }
-  button {
-    padding: 0;
-    align-self: center;
+    align-items: center;
   }
 
   img {
@@ -61,4 +63,5 @@
   button.empty {
     filter: grayscale(100%);
   }
+
 </style>

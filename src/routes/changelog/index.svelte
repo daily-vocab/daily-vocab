@@ -1,6 +1,5 @@
 <script>
   import { changelog } from "../../../changelog.json";
-  console.log({ changelog });
 
 </script>
 

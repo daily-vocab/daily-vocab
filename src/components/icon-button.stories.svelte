@@ -1,6 +1,6 @@
 <script>
-  import { Meta,Story,Template } from '@storybook/addon-svelte-csf';
-  import IconButton from './icon-button.svelte';
+  import { Meta, Story, Template } from "@storybook/addon-svelte-csf";
+  import IconButton from "./icon-button.svelte";
 
 </script>
 
@@ -8,19 +8,19 @@
   title="Components/IconButton"
   component={IconButton}
   argTypes={{
-    icon: { 
+    icon: {
       control: {
-        type: 'select',
-        options: ['add', 'warn', 'tick']
-      }
+        type: "select",
+        options: ["add", "copy", "delete", "edit", "tick", "warn"],
+      },
     },
-    size: { 
+    size: {
       control: {
-        type: 'select',
-        options: ['small', 'regular']
-      }
+        type: "select",
+        options: ["small", "regular"],
+      },
     },
-    onClick: { action: 'onClick'}
+    onClick: { action: "onClick" },
   }}
 />
 
@@ -28,4 +28,4 @@
   <IconButton {...args} on:click={args.onClick} />
 </Template>
 
-<Story name="Main" args={{icon: 'add', size: 'regular'}} />
+<Story name="Main" args={{ icon: "add", size: "regular" }} />

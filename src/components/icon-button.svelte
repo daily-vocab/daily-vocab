@@ -1,42 +1,52 @@
 <script>
     export let icon;
     export let size = "regular";
+    export let iconColor = "var(--accent-color)";
+    export let textColor = "";
+    import AddIcon from "../icons/add.svelte";
+    import CopyIcon from "../icons/copy.svelte";
+    import DeleteIcon from "../icons/delete.svelte";
+    import EditIcon from "../icons/edit.svelte";
+    import TickIcon from "../icons/tick.svelte";
+    import WarnIcon from "../icons/warn.svelte";
+
+    const iconMap = {
+        add: AddIcon,
+        copy: CopyIcon,
+        delete: DeleteIcon,
+        edit: EditIcon,
+        tick: TickIcon,
+        warn: WarnIcon,
+    };
 
 </script>
 
-<button class={`icon-button container ${icon}-icon`} on:click>
-    <img
-        src={`icons/${icon}.svg`}
-        class={`icon ${size} ${icon}-icon-img`}
-        alt={`${icon} icon`}
-    />
+<button
+    class={`icon-button ${icon}-icon icon--${size}`}
+    on:click
+    style={`--dv-icon-color: ${iconColor}; ${
+        textColor ? `--dv-icon-text-color: ${textColor}` : ""
+    }`}
+>
+    <svelte:component this={iconMap[icon]} />
 </button>
 
 <style>
-    .container {
+    button {
         background-color: var(--accent-color);
         display: flex;
         flex-direction: column;
         padding: 0;
         margin: 0;
     }
-
-    :global(.icon-button.container .icon) {
-        height: 3rem;
-        width: 3rem;
-        color: white;
-    }
-
-    :global(.icon-button.container .icon) {
-        height: 3rem;
-        width: 3rem;
-        color: white;
-    }
-
-    :global(.icon-button.container .icon.small) {
+    :global(.icon-button.icon--small svg) {
         height: 2rem;
         width: 2rem;
-        color: white;
+    }
+
+    :global(.icon-button svg) {
+        height: 3rem;
+        width: 3rem;
     }
 
 </style>
