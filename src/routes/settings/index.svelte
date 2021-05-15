@@ -36,10 +36,10 @@
       icon="delete"
       size="small"
       textColor="white"
+      iconColor={empty ? "gray" : undefined}
       on:click={() => clearAllVocabs()}
       disabled={empty}
     />
-    <!-- class:empty -->
   </div>
 
   <div class="setting">
