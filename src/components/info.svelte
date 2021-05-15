@@ -3,11 +3,13 @@
 
   export let type;
   export let icon;
+  export let iconColor;
   export let message;
+
 </script>
 
 <div class={`info container ${type}`}>
-  <IconButton {icon} size="small" />
+  <IconButton {icon} size="small" {iconColor} />
   <div class="message">{message}</div>
 </div>
 
@@ -38,4 +40,5 @@
   :global(.info .icon-button) {
     margin: 0 0.2rem;
   }
+
 </style>

@@ -5,7 +5,7 @@
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
 >
-  <circle cx="10" cy="10" r="10" fill="#9CDFAB" />
+  <circle cx="10" cy="10" r="10" style="fill: var(--dv-icon-color, #9CDFAB)" />
   <rect
     x="14.3669"
     y="6"
@@ -13,7 +13,7 @@
     height="10"
     rx="1"
     transform="rotate(45 14.3669 6)"
-    fill="black"
+    style="fill: var(--dv-icon-text-color, black)"
   />
   <rect
     x="5"
@@ -22,6 +22,6 @@
     height="4.83113"
     rx="1"
     transform="rotate(-45 5 10.7334)"
-    fill="black"
+    style="fill: var(--dv-icon-text-color, black)"
   />
 </svg>

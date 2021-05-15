@@ -2,6 +2,7 @@
     export let icon;
     export let size = "regular";
     export let iconColor = "var(--accent-color)";
+    export let textColor = "";
     import AddIcon from "../icons/add.svelte";
     import CopyIcon from "../icons/copy.svelte";
     import DeleteIcon from "../icons/delete.svelte";
@@ -23,7 +24,9 @@
 <button
     class={`icon-button ${icon}-icon icon--${size}`}
     on:click
-    style={`--dv-icon-color: ${iconColor}`}
+    style={`--dv-icon-color: ${iconColor}; ${
+        textColor ? `--dv-icon-text-color: ${textColor}` : ""
+    }`}
 >
     <svelte:component this={iconMap[icon]} />
 </button>

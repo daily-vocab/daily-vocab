@@ -50,8 +50,9 @@
                                 }}
                             />
                             <IconButton
-                                icon="delete--color"
+                                icon="delete"
                                 size="small"
+                                textColor="white"
                                 on:click={() => vocab.deleteVocab(vocabItem.id)}
                             />
                         </div>

@@ -7,7 +7,12 @@
 <Meta title="Components/Info" component={Info} />
 
 <Template let:args>
-  <Info message={args.message} type={args.type} icon={args.icon} />
+  <Info
+    message={args.message}
+    type={args.type}
+    icon={args.icon}
+    iconColor={args.iconColor}
+  />
 </Template>
 
 <Story
@@ -16,6 +21,7 @@
     type: "warn",
     message: "word is required field",
     icon: "warn",
+    iconColor: "#FFF1CC",
   }}
 />
 
