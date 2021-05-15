@@ -1,6 +1,13 @@
 {
   "changelog": [
     {
+      "version": "v0.1.0-beta",
+      "changes": [
+        "All CRUD operations on vocabs",
+        "Color scheme facelift and transition on delete"
+      ]
+    },
+    {
       "version": "v0.0.4-beta",
       "changes": [
         "Delete a Vocab",
