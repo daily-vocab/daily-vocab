@@ -7,6 +7,7 @@
     import CopyIcon from "../icons/copy.svelte";
     import DeleteIcon from "../icons/delete.svelte";
     import EditIcon from "../icons/edit.svelte";
+    import IncorrectIcon from "../icons/incorrect.svelte";
     import TickIcon from "../icons/tick.svelte";
     import WarnIcon from "../icons/warn.svelte";
 
@@ -15,6 +16,7 @@
         copy: CopyIcon,
         delete: DeleteIcon,
         edit: EditIcon,
+        incorrect: IncorrectIcon,
         tick: TickIcon,
         warn: WarnIcon,
     };
