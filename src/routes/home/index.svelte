@@ -1,4 +1,5 @@
 <script>
+    import { slide } from "svelte/transition";
     import { goto } from "@sapper/app";
     import { DateTime } from "luxon";
     import IconButton from "../../components/icon-button.svelte";
@@ -22,8 +23,8 @@
             </p>
         {/if}
 
-        {#each $vocab as vocabItem}
-            <div class="vocab">
+        {#each $vocab as vocabItem (vocabItem.id)}
+            <div class="vocab" out:slide|local>
                 <Accordion>
                     <div slot="header" class="vocab_header">
                         <div class="vocab_title">
