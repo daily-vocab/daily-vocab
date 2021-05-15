@@ -1,10 +1,17 @@
 {
   "changelog": [
     {
+      "version": "v0.1.1-beta",
+      "changes": [
+        "Fix color of clear vocabs button when there no vocabs to delete"
+      ]
+    },
+    {
       "version": "v0.1.0-beta",
       "changes": [
         "All CRUD operations on vocabs",
-        "Color scheme facelift and transition on delete"
+        "Color scheme facelift",
+        "Transition on vocab delete"
       ]
     },
     {
