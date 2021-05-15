@@ -55,13 +55,4 @@
     align-items: center;
   }
 
-  img {
-    height: 2rem;
-    width: 2rem;
-  }
-
-  button.empty {
-    filter: grayscale(100%);
-  }
-
 </style>
