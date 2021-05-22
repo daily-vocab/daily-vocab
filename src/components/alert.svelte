@@ -32,14 +32,16 @@
     box-shadow: 0.25rem 0.25rem 1rem rgb(194, 194, 194);
   }
 
-  @supports (not (backdrop-filter: 0.25rem)) {
+  @supports not (
+    (backdrop-filter: 0.25rem) or (-webkit-backdrop-filter: blur(0.25rem))
+  ) {
     .cmp-alert {
       background-color: #7ca8eb99;
     }
 
     .alert-window {
-      box-shadow: none;
-      background-color: unset;
+      box-shadow: 0.25rem 0.25rem 1rem #7ca8eb99;
+      background-color: #7ca8eb99;
     }
   }
 
