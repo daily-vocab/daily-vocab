@@ -5,6 +5,7 @@
   import { vocab } from "../../stores/vocab";
   let empty = false;
   let showClearVocabConfirmation = false;
+  let copiedModalMessage;
 
   onMount(async () => {
     await vocab.loadVocab();
@@ -22,9 +23,9 @@
   const exportMyVocabs = async () => {
     try {
       await navigator.clipboard.writeText(JSON.stringify($vocab));
-      alert("copied your vocabs into the clipboard! 😃");
+      copiedModalMessage = "copied your vocabs into the clipboard! 😃";
     } catch (_) {
-      alert("unable to export your vocabs 😭");
+      copiedModalMessage = "unable to export your vocabs 😭";
     }
   };
 
@@ -63,8 +64,23 @@
         />
         <IconButton
           icon="incorrect"
-          iconColor="gray"
+          iconColor="#DDD"
           on:click={() => (showClearVocabConfirmation = false)}
+        />
+      </div>
+    </Alert>
+  {/if}
+
+  {#if copiedModalMessage}
+    <Alert>
+      <h1>info</h1>
+      <p>{copiedModalMessage}</p>
+
+      <div class="confirmation-actions">
+        <IconButton
+          icon="incorrect"
+          iconColor="#DDD"
+          on:click={() => (copiedModalMessage = undefined)}
         />
       </div>
     </Alert>
