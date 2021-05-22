@@ -1,6 +1,13 @@
 {
   "changelog": [
     {
+      "version": "v0.1.5-beta",
+      "changes": [
+        "Add custom modal when showing message for exporting vocabs",
+        "Update custom modal styling"
+      ]
+    },
+    {
       "version": "v0.1.4-beta",
       "changes": [
         "Blur supports check with supports at-rule"
